@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  base: '/Crypto-Sandbox-React'
-})
+export default defineConfig(() => {
 
+  const isGithubPages = process.env.DEPLOY === "gh-pages";
+
+  return {
+    plugins: [react()],
+    base: isGithubPages ? '/Crypto-Sandbox-React/' : '/'
+  }
+
+})
